@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FutureLab – Design solutions to real-life problems</title>
+<style>
+:root{--bg:#060a14;--card:#0d1426;--line:#1c2a4a;--a:#00e0ff;--b:#8a5cff;--g:#2dff9a;--t:#e9f1ff;--m:#8fa3c7}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font-family:Inter,system-ui,Segoe UI,sans-serif;line-height:1.6;overflow-x:hidden}
+.orb{position:fixed;width:420px;height:420px;border-radius:50%;filter:blur(110px);opacity:.28;z-index:-1;animation:fl 14s ease-in-out infinite alternate}
+.o1{background:var(--b);top:-100px;left:-100px}.o2{background:var(--a);bottom:-120px;right:-80px;animation-delay:-6s}
+@keyframes fl{to{transform:translate(120px,80px) scale(1.2)}}
+nav{position:sticky;top:0;z-index:9;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:#060a14cc;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{font-weight:800;font-size:22px;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;color:transparent}
+nav div a{color:var(--m);text-decoration:none;margin-left:22px;font-size:14px;transition:.3s}nav div a:hover{color:var(--a)}
+section{padding:80px 5vw;max-width:1200px;margin:auto}
+h1{font-size:clamp(34px,6vw,68px);line-height:1.1;font-weight:800}h2{font-size:clamp(26px,4vw,40px);margin-bottom:8px}
+.grad{background:linear-gradient(90deg,var(--a),var(--b),var(--g));background-size:200%;-webkit-background-clip:text;color:transparent;animation:sh 5s linear infinite}
+@keyframes sh{to{background-position:200%}}
+.sub{color:var(--m);margin:14px 0 28px;max-width:640px}
+.btn{position:relative;overflow:hidden;border:0;cursor:pointer;padding:13px 26px;border-radius:12px;font-weight:700;font-size:15px;color:#001;background:linear-gradient(90deg,var(--a),var(--g));transition:.3s;box-shadow:0 0 0 #00e0ff00}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 30px #00e0ff55}.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent;color:var(--t);border:1px solid var(--line)}.btn.ghost:hover{border-color:var(--a);box-shadow:0 10px 30px #00e0ff22}
+.rip{position:absolute;border-radius:50%;background:#fff6;transform:scale(0);animation:rp .6s linear;pointer-events:none}@keyframes rp{to{transform:scale(4);opacity:0}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:24px}
+.dom{height:170px;border-radius:18px;cursor:pointer;position:relative;overflow:hidden;border:1px solid var(--line);background-size:cover;background-position:center;transition:.4s}
+.dom:hover{transform:translateY(-8px) rotate(-1deg);border-color:var(--a);box-shadow:0 18px 40px #00e0ff33}
+.dom.on{border-color:var(--g);box-shadow:0 0 0 2px var(--g),0 18px 40px #2dff9a33}
+.dom::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 20%,#060a14ee)}
+.dom span{position:absolute;left:16px;bottom:12px;font-weight:700;font-size:18px;z-index:1}.dom i{position:absolute;top:10px;right:14px;font-size:30px;z-index:1;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;margin-top:22px}
+textarea,input,select{width:100%;padding:13px;border-radius:12px;border:1px solid var(--line);background:#0a1122;color:var(--t);font:inherit;margin-top:8px;transition:.3s}
+textarea:focus,input:focus,select:focus{outline:0;border-color:var(--a);box-shadow:0 0 0 3px #00e0ff22}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.chip{padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:#0a1122;color:var(--t);cursor:pointer;transition:.3s;font-size:14px}
+.chip:hover{border-color:var(--a);transform:translateY(-2px)}.chip.on{background:linear-gradient(90deg,var(--a),var(--b));border-color:transparent;color:#fff}
+.step{margin:22px 0;animation:up .6s both}.step h4{color:var(--a)}
+@keyframes up{from{opacity:0;transform:translateY(24px)}}
+.rv{opacity:0;transform:translateY(30px);transition:.8s}.rv.in{opacity:1;transform:none}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:18px 0}
+.stat{background:#0a1122;border:1px solid var(--line);border-radius:14px;padding:16px;animation:up .6s both}.stat b{display:block;font-size:24px;color:var(--g)}.stat small{color:var(--m)}
+.bar{height:8px;background:#1c2a4a;border-radius:9px;overflow:hidden;margin-top:8px}.bar div{height:100%;background:linear-gradient(90deg,var(--g),var(--a));width:0;transition:1.4s}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}.flow div{background:#0a1122;border:1px solid var(--a);padding:10px 14px;border-radius:12px;animation:up .6s both}.flow em{color:var(--a);font-style:normal}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:700px){.row{grid-template-columns:1fr}}
+.msg{margin-top:12px;padding:12px 14px;border-radius:12px;display:none}.ok{background:#2dff9a22;border:1px solid var(--g);display:block}.no{background:#ff4d6d22;border:1px solid #ff4d6d;display:block}
+.plist div{background:#0a1122;border-left:3px solid var(--b);padding:12px 16px;border-radius:10px;margin:10px 0;animation:up .5s both}
+.amt{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.load{display:inline-block;width:18px;height:18px;border:3px solid #fff4;border-top-color:var(--a);border-radius:50%;animation:sp .8s linear infinite;vertical-align:middle}@keyframes sp{to{transform:rotate(360deg)}}
+.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}.ct a{color:var(--a);text-decoration:none;font-weight:600}
+footer{text-align:center;color:var(--m);padding:40px;border-top:1px solid var(--line)}
+#qr{background:#fff;padding:10px;border-radius:12px;display:inline-block;margin-top:10px}
+@media print{body *{visibility:hidden}#result,#result *{visibility:visible}#result{position:absolute;left:0;top:0;width:100%;color:#000}.btn{display:none}}
+
+#bg{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.hero{display:flex;align-items:center;gap:30px;flex-wrap:wrap}.hero>div:first-child{flex:1 1 420px}
+.earth{flex:1 1 320px;max-width:430px;animation:bob 6s ease-in-out infinite}
+.orbit{transform-origin:200px 200px;animation:rot 12s linear infinite}.orbit.s{animation-duration:20s;animation-direction:reverse}@keyframes rot{to{transform:rotate(360deg)}}
+.typed{color:var(--g);font-weight:700;min-height:30px;font-size:20px}.typed::after{content:"|";animation:bl 1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:22px}
+.hw{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;transition:.35s;transform-style:preserve-3d}.hw:hover{border-color:var(--b);box-shadow:0 18px 40px #8a5cff33}
+.hw b{font-size:34px;display:block}.hw small{color:var(--a)}
+.cnt{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;text-align:center}.cnt div{background:linear-gradient(135deg,#0d1426,#121c38);border:1px solid var(--line);border-radius:16px;padding:20px}.cnt b{font-size:34px;color:var(--a);display:block}
+.mq{overflow:hidden;white-space:nowrap;border-block:1px solid var(--line);padding:14px 0;color:var(--m)}.mq div{display:inline-block;animation:mq 30s linear infinite}@keyframes mq{to{transform:translateX(-50%)}}
+.dom{background-size:cover!important}.dom:hover{transform:translateY(-8px) scale(1.03)}
+.hint{display:block;color:var(--m);font-size:12px;margin-top:4px}</style></head><body>
+<div class="orb o1"></div><div class="orb o2"></div>
+<nav><div class="logo">🚀 FutureLab <small id="mode" style="font-size:11px;color:#8fa3c7;-webkit-text-fill-color:#8fa3c7"></small></div><div><a href="#explore">Explore Solutions</a><a href="#problems">Share Problem</a><a href="#submit">Submit Solution</a><a href="#donate">Donation</a><a href="#contact">Contact</a></div></nav>
+
+<canvas id="bg"></canvas>
+<section id="home" class="hero"><div><h1>Design the <span class="grad">future</span>,<br>one real problem at a time.</h1>
+<p class="typed" id="ty"></p>
+<p class="sub">Pick a real-life problem, build your solution step by step, and let our real AI estimate cost, eco-impact, difficulty and a build blueprint.</p>
+<a href="#explore"><button class="btn">Explore Solutions →</button></a> <a href="#donate"><button class="btn ghost">💳 Donation</button></a></div>
+<svg class="earth" viewBox="0 0 400 400"><defs><radialGradient id="eg" cx="35%" cy="30%"><stop offset="0" stop-color="#4fe0ff"/><stop offset=".6" stop-color="#1b5cff"/><stop offset="1" stop-color="#0a1a5c"/></radialGradient></defs>
+<circle cx="200" cy="200" r="120" fill="url(#eg)"/><path d="M130 170q30-40 60-15t10 45-50 30-30-30zM230 230q30-20 45 5t-20 40-35-20z" fill="#2dff9a" opacity=".85"/>
+<circle cx="200" cy="200" r="150" fill="none" stroke="#00e0ff55" stroke-dasharray="4 8"/><circle cx="200" cy="200" r="185" fill="none" stroke="#8a5cff44" stroke-dasharray="2 10"/>
+<g class="orbit"><circle cx="350" cy="200" r="9" fill="#00e0ff"/><text x="338" y="170" font-size="22">🚀</text></g><g class="orbit s"><circle cx="200" cy="15" r="8" fill="#8a5cff"/><text x="210" y="30" font-size="22">🛰️</text></g></svg></section>
+<div class="mq"><div>🏔️ Mountains &nbsp;•&nbsp; 🌊 Water &nbsp;•&nbsp; ⚡ Energy &nbsp;•&nbsp; 🏙️ Cities &nbsp;•&nbsp; 🌾 Agriculture &nbsp;•&nbsp; 🏥 Health &nbsp;•&nbsp; 📚 Education &nbsp;•&nbsp; 🚌 Transport &nbsp;•&nbsp; ♻️ Waste &nbsp;•&nbsp; 🌋 Disaster &nbsp;•&nbsp; 🌱 Climate &nbsp;•&nbsp; 🚀 Space &nbsp;•&nbsp; 🏔️ Mountains &nbsp;•&nbsp; 🌊 Water &nbsp;•&nbsp; ⚡ Energy &nbsp;•&nbsp; 🏙️ Cities &nbsp;•&nbsp; 🌾 Agriculture &nbsp;•&nbsp; 🏥 Health &nbsp;•&nbsp; 📚 Education &nbsp;•&nbsp; 🚌 Transport &nbsp;•&nbsp; ♻️ Waste &nbsp;•&nbsp; 🌋 Disaster &nbsp;•&nbsp; 🌱 Climate &nbsp;•&nbsp; 🚀 Space &nbsp;•&nbsp;</div></div>
+<section class="rv"><h2>How FutureLab works</h2><div class="how">
+<div class="hw"><b>🎯</b><small>STEP 1</small><h4>Pick a problem</h4><p class="sub" style="margin:6px 0 0">Choose a real-life problem area.</p></div>
+<div class="hw"><b>🧩</b><small>STEP 2</small><h4>Design your solution</h4><p class="sub" style="margin:6px 0 0">Choose AI options or write your own.</p></div>
+<div class="hw"><b>🤖</b><small>STEP 3</small><h4>AI blueprint</h4><p class="sub" style="margin:6px 0 0">Cost, eco-rating, difficulty, build time.</p></div>
+<div class="hw"><b>🌍</b><small>STEP 4</small><h4>Share &amp; support</h4><p class="sub" style="margin:6px 0 0">Submit your idea or donate.</p></div></div>
+<div class="cnt" style="margin-top:22px"><div><b data-n="12">0</b>Problem areas</div><div><b data-n="36">0</b>States &amp; UTs</div><div><b data-n="4">0</b>Design steps</div><div><b data-n="100">0</b>% AI-checked</div></div></section>
+<section id="explore" class="rv"><h2>WHAT PROBLEM DO YOU WANT TO SOLVE?</h2><p class="sub">Select a real-life problem</p>
+<div class="grid" id="doms"></div>
+<div class="panel" id="builder" style="display:none">
+<h3 id="bt"></h3>
+<label>Describe the exact problem (you can edit this)</label><textarea id="prob" rows="2"></textarea>
+<button class="btn" style="margin-top:14px" onclick="loadSteps()">🤖 Get AI options</button>
+<div id="steps"></div>
+<div id="go" style="display:none"><button class="btn" onclick="estimate()">⚡ Calculate with AI</button></div>
+<div id="result"></div></div></section>
+
+<section id="problems" class="rv"><h2>🧩 Share a Problem</h2><p class="sub">Tell us a real problem people face. Good ones appear below for others to solve.</p>
+<div class="panel"><textarea id="np" rows="3" placeholder="e.g. Water pipes freeze every winter in our village in Nubra…"></textarea>
+<button class="btn" style="margin-top:12px" onclick="send('problem','np','npm')">Submit Problem</button><div class="msg" id="npm"></div></div>
+<div class="plist" id="plist"></div></section>
+
+<section id="submit" class="rv"><h2>💡 Submit Your Solution / Upgrade</h2><p class="sub">Our AI checks every submission. Approved ideas go straight to the FutureLab team.</p>
+<div class="panel"><textarea id="sol" rows="4" placeholder="Write your solution, upgrade or opinion (minimum 20 characters)…"></textarea>
+<button class="btn" style="margin-top:12px" onclick="checkSol()">🤖 Check with AI</button><div class="msg" id="sm"></div>
+<div id="form" style="display:none"><div class="row">
+<div><label>Your name</label><input id="nm" placeholder="e.g. Tsering Dolma"><small class="hint">Example: Tsering Dolma, Rigzin Angmo, Stanzin Norbu</small></div>
+<div><label>Father's name</label><input id="fa" placeholder="e.g. Stanzin Namgyal"><small class="hint">Example: Stanzin Namgyal, Tashi Wangchuk, Konchok Dorje</small></div>
+<div><label>State / UT</label><select id="st"></select><small class="hint">Example: Ladakh</small></div>
+<div><label>Region / District</label><input id="rg" placeholder="e.g. Ladakh – Leh"><small class="hint">Example: Ladakh – Leh, Ladakh – Kargil, Nubra, Zanskar</small></div>
+<div><label>Your email</label><input id="em" type="email" placeholder="e.g. tsering.dolma@gmail.com"><small class="hint">So our team can reply to you</small></div>
+<div><label>Village / City</label><input id="vl" placeholder="e.g. Diskit, Hemis, Likir, Leh"><small class="hint">Example: Diskit, Hemis, Likir, Sumur, Leh</small></div></div>
+<button class="btn" style="margin-top:14px" onclick="final()">Send to FutureLab ✓</button><div class="msg" id="fm"></div></div></div></section>
+
+<section id="donate" class="rv"><h2>💳 Donation</h2><p class="sub">Support free prototypes for remote communities. Pay with any UPI app – Paytm, GPay, PhonePe, BHIM.</p>
+<div class="panel"><div class="amt"><button class="btn ghost" onclick="pay(51)">₹51</button><button class="btn ghost" onclick="pay(101)">₹101</button><button class="btn ghost" onclick="pay(501)">₹501</button><button class="btn ghost" onclick="pay(1001)">₹1001</button></div>
+<input id="am" type="number" min="1" placeholder="Or enter any amount (₹)"><br><br>
+<button class="btn" onclick="pay(document.getElementById('am').value)">💳 Donate with UPI</button>
+<p class="sub" style="margin-top:14px">UPI ID: <b id="upiid"></b> <button class="btn ghost" style="padding:6px 14px" onclick="copyUpi()">📋 Copy</button></p><div class="msg" id="dm"></div></div></section>
+
+<section id="contact" class="rv"><h2>📞 Contact</h2><div class="ct panel"><div>📱 Phone<br><a href="tel:+919186124831">9186124831</a></div><div>✉️ Email<br><a href="mailto:rigzenmutup937@gmail.com">rigzenmutup937@gmail.com</a></div></div></section>
+<footer>© FutureLab · Built for a better tomorrow 🌍</footer>
+
+<script>
+const UPI_ID='rigzenmutup937@oksbi';
+const D=[['Mountains','🏔️','mountains'],['Water','🌊','water'],['Energy','⚡','energy'],['Cities','🏙️','cities'],['Agriculture','🌾','agriculture'],['Health','🏥','health'],['Education','📚','education'],['Transport','🚌','transport'],['Waste & Recycling','♻️','waste'],['Disaster Safety','🌋','disaster'],['Climate & Environment','🌱','environment'],['Space Tech','🚀','space']];
+const G={mountains:'#1d3b5c,#0b1a2b',water:'#0a4d7a,#06182b',energy:'#7a5a0a,#1b1405',cities:'#3b2a6b,#0e0a1f',agriculture:'#1f5a2b,#0a1a0d',health:'#7a1f3a,#1a0a10',education:'#2a4a7a,#0a1220',transport:'#5a3a1f,#150d07',waste:'#1f5a4a,#07150f',disaster:'#7a2f1f,#1a0b07',environment:'#2a6b3b,#08170c',space:'#2b1f6b,#07051a'};
+const STATES=['Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh','Goa','Gujarat','Haryana','Himachal Pradesh','Jharkhand','Karnataka','Kerala','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura','Uttar Pradesh','Uttarakhand','West Bengal','Andaman & Nicobar','Chandigarh','Dadra & Nagar Haveli and Daman & Diu','Delhi','Jammu & Kashmir','Ladakh','Lakshadweep','Puducherry'];
+const $=id=>document.getElementById(id);let S={d:null,steps:[],picks:[],res:null};
+$('st').innerHTML='<option value="">Select state / UT</option>'+STATES.map(s=>`<option>${s}</option>`).join('');$('upiid').textContent=UPI_ID;
+// ripple on all buttons
+document.addEventListener('click',e=>{const b=e.target.closest('.btn');if(!b)return;const r=document.createElement('span'),z=Math.max(b.clientWidth,b.clientHeight),p=b.getBoundingClientRect();r.className='rip';r.style.cssText=`width:${z}px;height:${z}px;left:${e.clientX-p.left-z/2}px;top:${e.clientY-p.top-z/2}px`;b.appendChild(r);setTimeout(()=>r.remove(),600)});
+// scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.1});document.querySelectorAll('.rv').forEach(x=>io.observe(x));
+// domain cards (put your own photos in public/img/<id>.jpg)
+D.forEach(([n,ic,id])=>{const c=document.createElement('div');c.className='dom';c.style.backgroundImage=`url(img/${id}.jpg),url("${art(id)}")`;c.innerHTML=`<i>${ic}</i><span>${n}</span>`;c.onclick=()=>pick(c,n,ic);$('doms').appendChild(c)});
+function pick(c,n,ic){document.querySelectorAll('.dom').forEach(x=>x.classList.remove('on'));c.classList.add('on');S={d:n,steps:[],picks:[],res:null};
+$('builder').style.display='block';$('bt').textContent=ic+' '+n;$('prob').value='';$('prob').placeholder='Describe the '+n+' problem you want to solve, e.g. "No clean drinking water in winter at 4000 m altitude"';
+$('steps').innerHTML='';$('go').style.display='none';$('result').innerHTML='';$('builder').scrollIntoView({behavior:'smooth',block:'start'})}
+
+// ====== SETTINGS (edit these 3 lines) ======
+const ANTHROPIC_KEY='PASTE_YOUR_ANTHROPIC_KEY_HERE';   // console.anthropic.com
+const WEB3FORMS_KEY='';  // EASIEST: get a free key at web3forms.com (enter rigzenmutup937@gmail.com, the key arrives in your email) and paste it here
+const FORM_URL='';  // (optional alternative) Formspree link  // free inbox to your email: make a form at formspree.io → paste https://formspree.io/f/xxxx
+const MODEL='claude-sonnet-5-5';
+const BEST_SCORE=7; // only solutions the AI rates 7/10 or higher are emailed to you (use 1-10)
+// ===========================================
+
+// ===== BASIC MODE: works with no API key (simple built-in logic instead of real AI) =====
+const NOKEY=ANTHROPIC_KEY.startsWith('PASTE');
+const BAD=/(f+u+c+k|sh[i1]t|b[i1]tch|a+ssh[o0]le|bastard|dick|pussy|slut|whore|madarchod|behenchod|bhenchod|chut[iy]a|gaand?u|bhosd|harami|randi|lund|mc\b|bc\b|kamin[ae]|kutt[ae])/i;
+const hs=s=>[...String(s)].reduce((a,c)=>(a*31+c.charCodeAt(0))%9973,7);
+function localMod(text){const t=String(text).trim(),sq=t.toLowerCase().replace(/[^a-z\u0900-\u097f ]/g,'');
+ if(t.length<20)return{approved:false,best:false,reason:'Please write at least 20 characters.'};
+ if(BAD.test(sq)||BAD.test(sq.replace(/ /g,'')))return{approved:false,best:false,reason:'Please remove abusive or inappropriate words.'};
+ const w=sq.split(/\s+/).filter(Boolean);if(w.length<4||/(.)\1{4,}/.test(sq)||w.filter(x=>/[aeiou\u0900-\u097f]/.test(x)).length<w.length*.6)return{approved:false,best:false,reason:'This does not look like a real idea. Please explain it in clear words.'};
+ const k=(sq.match(/solar|wind|battery|filter|sensor|water|pipe|cost|material|steel|plastic|pump|tank|village|energy|heat|storage|recycl|simple|local|build|install|test|panel|motor|design/g)||[]).length;
+ const q=Math.max(4,Math.min(10,3+Math.min(3,Math.floor(w.length/20))+Math.min(3,Math.floor(k/2))+(/\d/.test(t)?1:0)));
+ const e=localApi('/api/estimate',{domain:(typeof S!=='undefined'&&S.d)||'',picks:[{choice:t}]});return{approved:true,best:q>=BEST_SCORE,quality:q,est:{costINR:e.costINR,ecoScore:e.ecoScore,difficulty:e.difficulty,buildDays:e.buildDays},reason:'Basic check passed.',tip:'Add specific materials, numbers (size, cost, quantity) and clear steps to make it stronger.',summary:t.slice(0,120)}}
+function localApi(u,b){
+ if(u==='/api/moderate')return localMod(b.text);
+ if(u==='/api/options'){const d=b.domain||'this problem';return{steps:[
+  {title:'Energy / Power Source',options:['Solar panels','Wind micro-turbine','Micro-hydro (flowing water)','Biogas','Thermoelectric generator','Hand / pedal power']},
+  {title:'Core Mechanism',options:['Passive gravity flow','Peltier cold-plate array','Heat pump','Sensor + microcontroller automation','Simple mechanical pump / lever']},
+  {title:'Processing / Filtration',options:['Activated carbon matrix','Ceramic filter','UV purification','Sand & gravel bed','Biochar layer']},
+  {title:'Storage / Delivery',options:['Phase-change material chamber','Insulated tank','Battery bank','Underground cellar storage','Community distribution point']}]}}
+ if(u==='/api/estimate'){const P=(b.picks||[]).map(p=>String(p.choice)),all=P.join(' ').toLowerCase(),base={mountains:42000,water:30000,energy:55000,cities:90000,agriculture:25000,health:60000,education:20000,transport:80000,waste:28000,disaster:50000,environment:26000,space:150000}[(D.find(x=>x[0]===b.domain)||[0,0,'water'])[2]]||40000;
+  const has=r=>(all.match(r)||[]).length;let m=.75+(P.reduce((a,c)=>a+hs(c),0)%60)/100+has(/solar|battery|storage/g)*.12+has(/ai|iot|sensor|microcontroller|satellite|uv|peltier|thermoelectric|heat pump/g)*.15-has(/hand|pedal|gravity|passive|sand|ceramic|biochar|simple/g)*.1;
+  const cost=Math.max(3000,Math.round(base*m/500)*500),eco=Math.max(1,Math.min(10,Math.round(5+has(/solar|wind|hydro|biogas|biochar|recycl|passive|gravity|hand/g)*1.2-has(/diesel|coal|plastic|battery/g)*.8+(hs(all)%3)-1))),
+  cx=has(/ai|iot|sensor|microcontroller|satellite|uv|peltier|thermoelectric|heat pump|automation/g)+(cost>80000?2:cost>40000?1:0),dif=cx>=4?'Expert':cx>=3?'Hard':cx>=1?'Medium':'Easy';
+  return{costINR:cost,costNote:'Basic offline estimate (add an AI key for precise figures)',ecoScore:eco,ecoNote:eco>=7?'Mostly clean and renewable choices':'Some choices add pollution or waste',difficulty:dif,buildDays:Math.max(5,Math.round(cost/5000)+cx*3),
+  materials:P.map(c=>c+' – approx ₹'+(Math.round((800+hs(c)%7000)/100)*100).toLocaleString('en-IN')),howItWorks:P.map(c=>c),
+  impact:`This design for ${b.domain||'the problem'} scores ${eco}/10 for the environment. Local materials and renewable energy raise this score further.`,
+  prototype:['Draw a simple sketch of the whole system','Collect the materials listed','Build a small 1:10 model','Test the core mechanism for 3 days','Measure the output and fix weak points','Test in real conditions with the community'],risks:['Cold, wind and dust can reduce performance in mountain areas','Spare parts may be hard to find locally']}}}
+const clip=(s,n=1500)=>String(s||'').slice(0,n);
+async function ai(system,user,max=1800){
+ if(ANTHROPIC_KEY.startsWith('PASTE'))throw new Error('Add your Anthropic key at the top of the script');
+ const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'content-type':'application/json','x-api-key':ANTHROPIC_KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+ body:JSON.stringify({model:MODEL,max_tokens:max,system:system+' Reply with ONLY valid JSON, no markdown.',messages:[{role:'user',content:user}]})});
+ const j=await r.json();if(!r.ok)throw new Error(j.error?.message||'AI error');
+ const t=j.content.map(c=>c.text||'').join('');const a=t.indexOf('{'),z=t.lastIndexOf('}');if(a<0)throw new Error('AI gave an unreadable answer, please try again');return JSON.parse(t.slice(a,z+1))}
+async function moderate(kind,text){
+ if(NOKEY)return localMod(text);
+ if(String(text).trim().length<20)return{approved:false,best:false,reason:'Please write at least 20 characters.'};
+ const v=await ai('You are a strict but fair judge for an engineering ideas site. Reject abusive/obscene words in ANY language (incl. Hindi/Urdu/Ladakhi in English letters), spam, gibberish, ads, or text unrelated to solving a real problem. Score quality 1-10 on how practical, specific, original and useful the idea is: 9-10 excellent, 7-8 good and specific, 4-6 vague or generic, 1-3 poor.',
+ `Type: ${kind}
+Text: ${clip(text)}
+Return {"approved":boolean (false only if abusive/spam/irrelevant),"quality":number 1-10,"reason":"one friendly sentence","tip":"one sentence on how to improve it","summary":"one-line summary of the idea","estimate":{"costINR":number (realistic total build cost in India for exactly this solution),"ecoScore":number 1-10,"difficulty":"Easy|Medium|Hard|Expert","buildDays":number}}`,600);
+ const q=Number(v.quality)||0,ok=!!v.approved&&q>=4;
+ return{approved:ok,best:ok&&q>=BEST_SCORE,reason:v.reason,tip:v.tip,summary:v.summary,quality:q,est:v.estimate}}
+async function api(u,b){
+ if(NOKEY){const L=localApi(u,b);if(L)return L}
+ if(u==='/api/options')return ai('You are an expert engineer for India (esp. Ladakh/Himalaya). Design a build process for the problem.',`Domain: ${clip(b.domain,60)}\nProblem: ${clip(b.problem,300)}\nReturn {"steps":[{"title":"Energy / Power Source","options":["..4 short options"]},{"title":"Core Mechanism","options":[]},{"title":"Processing / Filtration","options":[]},{"title":"Storage / Delivery","options":[]}]} with options specific to this problem.`);
+ if(u==='/api/estimate')return ai('You are a realistic cost estimator and engineer for projects in India. Be honest and specific; costs differ with each choice.',`Domain: ${clip(b.domain,60)}\nProblem: ${clip(b.problem,300)}\nChoices: ${clip(JSON.stringify(b.picks),900)}\nReturn {"costINR":number,"costNote":"short","ecoScore":number 1-10,"ecoNote":"short","difficulty":"Easy|Medium|Hard|Expert","buildDays":number,"materials":["item - approx INR"],"howItWorks":["step 1","step 2","step 3","step 4"],"impact":"2 sentences","prototype":["6 short prototype steps"],"risks":["2 risks"]}`,2200);
+ if(u==='/api/moderate')return moderate(b.kind,b.text);
+ if(u==='/api/submit'){const v=b.verdict||await moderate(b.kind,b.text);if(!v.approved)return v;if(b.kind==='solution'&&!v.best)return{ok:true,held:true};
+  const item={type:b.kind,message:clip(b.text),design:clip(b.context,600),name:b.name||'',father:b.father||'',state:b.state||'',village:b.village||'',region:b.region||'',quality:v.quality+'/10',ai_summary:v.summary||'',email:b.email||'',...(v.est?{solution_est_cost:'₹'+Number(v.est.costINR).toLocaleString('en-IN'),solution_est_eco:v.est.ecoScore+'/10',solution_est_difficulty:v.est.difficulty,solution_est_build_days:v.est.buildDays}:{}),...(S.res&&b.context?{design_est_cost:'₹'+Number(S.res.costINR).toLocaleString('en-IN'),design_est_eco:S.res.ecoScore+'/10',design_est_difficulty:S.res.difficulty,design_est_build_days:S.res.buildDays}:{})};
+  if(b.kind==='problem'){const l=JSON.parse(localStorage.getItem('fl_p')||'[]');l.unshift({text:item.message});localStorage.setItem('fl_p',JSON.stringify(l.slice(0,30)))}
+  if(WEB3FORMS_KEY){const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'content-type':'application/json',accept:'application/json'},body:JSON.stringify({access_key:WEB3FORMS_KEY,subject:'FutureLab: new '+b.kind+' from '+(item.name||'a visitor'),from_name:'FutureLab Website',...item})});const j=await r.json().catch(()=>({}));if(!r.ok||j.success===false)throw new Error(j.message||'Could not deliver to your email')}
+  else if(FORM_URL){const r=await fetch(FORM_URL,{method:'POST',headers:{'content-type':'application/json',accept:'application/json'},body:JSON.stringify(item)});if(!r.ok)throw new Error('Could not deliver to inbox')}
+  else window.location.href='mailto:rigzenmutup937@gmail.com?subject='+encodeURIComponent('FutureLab '+b.kind)+'&body='+encodeURIComponent(Object.entries(item).map(([k,x])=>k+': '+x).join('\n'));
+  return{ok:true}}}
+async function loadSteps(){const p=$('prob').value.trim();if(p.length<10)return alert('Please describe the problem first (at least 10 characters).');
+$('steps').innerHTML='<p><span class="load"></span> AI is designing options…</p>';
+try{S.steps=(await api('/api/options',{domain:S.d,problem:p})).steps}catch(e){$('steps').innerHTML=`<div class="msg no">AI unavailable: ${e.message}. Check your server API key.</div>`;return}
+S.picks=S.steps.map(()=>'');renderSteps()}
+function renderSteps(){const w=$('steps');w.innerHTML='';S.steps.forEach((s,i)=>{const d=document.createElement('div');d.className='step';d.style.animationDelay=i*.12+'s';d.innerHTML=`<h4>Step ${i+1}: ${s.title}</h4><div class="chips"></div><input placeholder="…or write your own idea">`;
+const ch=d.querySelector('.chips');s.options.forEach(o=>{const b=document.createElement('button');b.className='chip';b.textContent=o;b.onclick=()=>{S.picks[i]=o;ch.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));b.classList.add('on');d.querySelector('input').value='';chk()};ch.appendChild(b)});
+d.querySelector('input').oninput=e=>{S.picks[i]=e.target.value;ch.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));chk()};w.appendChild(d)})}
+function chk(){$('go').style.display=S.picks.every(p=>p.trim())?'block':'none'}
+async function estimate(){$('result').innerHTML='<p><span class="load"></span> AI is calculating cost, eco-rating and blueprint…</p>';
+const picks=S.steps.map((s,i)=>({step:s.title,choice:S.picks[i]}));
+try{S.res=await api('/api/estimate',{domain:S.d,problem:$('prob').value,picks})}catch(e){$('result').innerHTML=`<div class="msg no">AI error: ${e.message}</div>`;return}
+const r=S.res,li=a=>(a||[]).map(x=>`<li>${x}</li>`).join('');
+$('result').innerHTML=`<h3 style="margin-top:24px">📐 AI Blueprint</h3><div class="stats">
+<div class="stat"><small>Estimated cost</small><b>₹${Number(r.costINR).toLocaleString('en-IN')}</b><small>${r.costNote||''}</small></div>
+<div class="stat"><small>Eco-rating</small><b>${r.ecoScore}/10</b><div class="bar"><div id="eb"></div></div><small>${r.ecoNote||''}</small></div>
+<div class="stat"><small>Difficulty</small><b>${r.difficulty}</b></div><div class="stat"><small>Build time</small><b>${r.buildDays} days</b></div></div>
+<h4>How it works</h4><div class="flow">${(r.howItWorks||[]).map((x,i)=>(i?'<em>→</em>':'')+`<div style="animation-delay:${i*.2}s">${x}</div>`).join('')}</div>
+<div class="row"><div><h4>🧱 Materials</h4><ul>${li(r.materials)}</ul></div><div><h4>🛠 Prototype steps</h4><ol>${li(r.prototype)}</ol></div></div>
+<h4>🌍 Environmental impact</h4><p>${r.impact}</p><h4>⚠ Risks</h4><ul>${li(r.risks)}</ul>
+<p style="margin-top:18px"><button class="btn" onclick="window.print()">📄 Export PDF Schematic</button> <button class="btn ghost" onclick="applyIt()">✅ Apply this</button></p>`;
+setTimeout(()=>{const b=$('eb');if(b)b.style.width=r.ecoScore*10+'%'},100);$('result').scrollIntoView({behavior:'smooth'})}
+function applyIt(){S.ctx=`${S.d} | ${S.steps.map((s,i)=>s.title+': '+S.picks[i]).join(' | ')} | ₹${S.res.costINR}`;$('sol').value='My solution for: '+$('prob').value+'\n\nDesign: '+S.steps.map((s,i)=>S.picks[i]).join(' → ')+'\n\nMy improvement: ';$('submit').scrollIntoView({behavior:'smooth'})}
+function show(id,ok,t){const m=$(id);m.className='msg '+(ok?'ok':'no');m.textContent=t}
+async function send(kind,tid,mid,extra={}){show(mid,true,'🤖 AI is reviewing…');try{const r=await api('/api/submit',{kind,text:$(tid).value,context:S.ctx,...extra});
+if(r.ok){show(mid,true,(kind==='solution'?(r.held?'✅ Thank you! Your idea was recorded. Only top-rated ideas (7/10+) are forwarded to the team, so improve it and submit again anytime.':'✅ Sent to the FutureLab team! We will contact you. Thank you!'):'✅ Approved by AI. Thank you!'));$(tid).value='';if(kind==='problem')loadP();return true}show(mid,false,'❌ Not approved: '+r.reason)}catch(e){show(mid,false,'Error: '+e.message)}}
+async function checkSol(){show('sm',true,'🤖 AI is reviewing your solution…');$('form').style.display='none';
+ try{const r=await api('/api/moderate',{kind:'solution',text:$('sol').value});S.v=r;
+  if(!r.approved)return show('sm',false,'❌ '+r.reason);
+  const E=r.est?` Estimated for your solution → Cost: ₹${Number(r.est.costINR).toLocaleString('en-IN')} • Eco-rating: ${r.est.ecoScore}/10 • Difficulty: ${r.est.difficulty} • Build time: ${r.est.buildDays} days.`:'';show('sm',true,(r.best?'🏆 Excellent! ':'👍 Approved! ')+'Rated '+r.quality+'/10.'+E+' Please fill in your details below.'+(r.best?'':' Tip to make it even stronger: '+(r.tip||'add specific materials, numbers and steps.')));$('form').style.display='block';$('form').scrollIntoView({behavior:'smooth',block:'center'})}
+ catch(e){show('sm',false,'⚠ Could not reach the AI: '+e.message+'. Check your key at the top of the script, and open the page with VS Code Live Server (not by double-click).')}}
+async function final(){if(!$('nm').value.trim()||!$('fa').value.trim()||!$('st').value||!$('vl').value.trim())return show('fm',false,'Please fill your name, father\'s name, state and village/city.');
+if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('em').value.trim()))return show('fm',false,'Please enter a valid email so we can reply to you.');
+if(await send('solution','sol','fm',{name:$('nm').value,father:$('fa').value,state:$('st').value,village:$('vl').value,region:$('rg').value,email:$('em').value.trim(),verdict:S.v}))$('form').style.display='none'}
+function loadP(){const l=JSON.parse(localStorage.getItem('fl_p')||'[]');$('plist').innerHTML='';l.forEach(p=>{const d=document.createElement('div');d.textContent=p.text;$('plist').appendChild(d)})}loadP();
+function pay(a){a=Number(a);if(!a||a<1)return alert('Enter a valid amount');
+const u=`upi://pay?pa=${UPI_ID}&pn=FutureLab&am=${a}&cu=INR&tn=FutureLab%20Donation`;
+if(/Android|iPhone|iPad/i.test(navigator.userAgent)){show('dm',true,'Opening your UPI app for ₹'+a+'…');location.href=u}
+else show('dm',true,'On a computer, open any UPI app (Paytm, GPay, PhonePe) on your phone and pay ₹'+a+' to '+UPI_ID+'. Tap Copy to copy the ID.')}
+function copyUpi(){navigator.clipboard.writeText(UPI_ID).then(()=>show('dm',true,'✅ UPI ID copied: '+UPI_ID),()=>show('dm',true,'UPI ID: '+UPI_ID))}
+
+// ===== illustrated scenes (built-in pictures, no downloads needed) =====
+function art(id){const c=G[id].split(','),S=(b)=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/>${b}</svg>`;
+const stars=[...Array(25)].map((_,i)=>`<circle cx="${(i*97)%400}" cy="${(i*53)%160}" r="${i%3?1:2}" fill="#fff" opacity=".7"/>`).join('');
+const T={
+mountains:`${stars}<circle cx="310" cy="70" r="28" fill="#ffe9a8"/><path d="M0 300V190l80-90 60 70 70-110 90 130 100-60v170z" fill="#243b5e"/><path d="M210 60l-30 45 20-8 12 14 14-14 20 8z" fill="#fff"/><path d="M80 100l-22 32 14-6 8 10 10-10 12 6z" fill="#fff"/><path d="M0 300V230l90-40 100 50 110-60 100 50v70z" fill="#10213a"/>`,
+water:`<circle cx="320" cy="60" r="26" fill="#ffe9a8"/><path d="M0 150q50-25 100 0t100 0 100 0 100 0v150H0z" fill="#1d7fc4"/><path d="M0 200q50-25 100 0t100 0 100 0 100 0v100H0z" fill="#0f5a96"/><path d="M0 250q50-20 100 0t100 0 100 0 100 0v50H0z" fill="#0a3d6b"/><path d="M200 40q-40 55-40 85a40 40 0 0080 0c0-30-40-85-40-85z" fill="#7fe3ff"/>`,
+energy:`<circle cx="90" cy="80" r="34" fill="#ffd54a"/>${[...Array(12)].map((_,i)=>`<line x1="90" y1="80" x2="${90+60*Math.cos(i*.52)}" y2="${80+60*Math.sin(i*.52)}" stroke="#ffd54a" stroke-width="3"/>`).join('')}<rect x="258" y="110" width="8" height="150" fill="#ddd"/><g transform="translate(262 110)"><g><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite"/><path d="M0 0L-6-70 6-70z M0 0L60 35 55 45z M0 0L-60 35 -55 45z" fill="#fff"/></g></g><rect x="0" y="260" width="400" height="40" fill="#2a2208"/>`,
+cities:`${stars}${[[20,120,50],[80,70,60],[150,140,45],[200,50,70],[280,100,55],[340,150,50]].map(([x,y,w])=>`<rect x="${x}" y="${y}" width="${w}" height="${300-y}" fill="#2c1f55"/>`+[...Array(12)].map((_,i)=>`<rect x="${x+8+(i%3)*14}" y="${y+10+Math.floor(i/3)*22}" width="7" height="10" fill="${i%4?'#ffe27a':'#5a4a90'}"/>`).join('')).join('')}`,
+agriculture:`<circle cx="320" cy="60" r="30" fill="#ffd54a"/>${[...Array(7)].map((_,i)=>`<path d="M${-40+i*70} 300L${150+i*15} 170L${170+i*15} 170L${40+i*70} 300z" fill="${i%2?'#2f7a3a':'#3f9a4a'}"/>`).join('')}<path d="M200 170v-50M200 140q-25-5-30-30 25 0 30 30M200 130q25-5 30-30-25 0-30 30" stroke="#7dff9a" stroke-width="4" fill="none"/>`,
+health:`<circle cx="200" cy="130" r="70" fill="#fff" opacity=".12"/><path d="M180 80h40v40h40v40h-40v40h-40v-40h-40v-40h40z" fill="#ff5c8a"/><path d="M0 250h120l15-35 25 70 20-45 15 10h205" stroke="#7dffd0" stroke-width="4" fill="none"/>`,
+education:`${stars}<path d="M200 120q-60-30-130-10v120q70-20 130 10z" fill="#e8f0ff"/><path d="M200 120q60-30 130-10v120q-70-20-130 10z" fill="#bcd0ff"/><path d="M200 120v120" stroke="#2a4a7a" stroke-width="3"/><path d="M200 60l70 25-70 25-70-25z" fill="#ffd54a"/>`,
+transport:`<rect y="230" width="400" height="70" fill="#222"/>${[0,1,2,3,4].map(i=>`<rect x="${i*90}" y="262" width="50" height="6" fill="#ddd"/>`).join('')}<rect x="90" y="150" width="210" height="85" rx="14" fill="#ffb347"/>${[0,1,2,3].map(i=>`<rect x="${105+i*48}" y="165" width="38" height="30" rx="5" fill="#bfe9ff"/>`).join('')}<circle cx="140" cy="238" r="18" fill="#111"/><circle cx="250" cy="238" r="18" fill="#111"/><circle cx="320" cy="60" r="26" fill="#ffe9a8"/>`,
+waste:`<text x="200" y="215" font-size="170" text-anchor="middle" fill="#3dffa8">♻</text><circle cx="200" cy="150" r="115" fill="none" stroke="#3dffa855" stroke-dasharray="6 10"/>`,
+disaster:`<path d="M0 220l60-20 40 25 50-30 60 35 70-25 50 20 70-20v115H0z" fill="#3a1a10"/><path d="M200 70l60 20v50c0 40-30 65-60 80-30-15-60-40-60-80V90z" fill="#ff7a4d"/><path d="M185 140l12 14 24-30" stroke="#fff" stroke-width="8" fill="none"/>`,
+environment:`<circle cx="320" cy="60" r="28" fill="#ffe9a8"/><rect x="190" y="170" width="20" height="100" fill="#6b4a2a"/><circle cx="200" cy="130" r="60" fill="#2f9a4a"/><circle cx="150" cy="160" r="40" fill="#3fb85a"/><circle cx="250" cy="160" r="40" fill="#3fb85a"/><rect y="265" width="400" height="35" fill="#143a1c"/>`,
+space:`${stars}<circle cx="200" cy="150" r="60" fill="#7a5cff"/><ellipse cx="200" cy="150" rx="110" ry="22" fill="none" stroke="#ffd54a" stroke-width="7" transform="rotate(-18 200 150)"/><circle cx="320" cy="60" r="14" fill="#ff8a5c"/><path d="M60 230l10-30 10 30-10-8z" fill="#fff"/>`};
+return 'data:image/svg+xml;utf8,'+encodeURIComponent(S(T[id]))}
+// ===== effects =====
+(()=>{const cv=$('bg'),x=cv.getContext('2d');let W,H,P=[];const rs=()=>{W=cv.width=innerWidth;H=cv.height=innerHeight;P=[...Array(70)].map(()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}))};rs();addEventListener('resize',rs);
+(function f(){x.clearRect(0,0,W,H);P.forEach((p,i)=>{p.x=(p.x+p.vx+W)%W;p.y=(p.y+p.vy+H)%H;x.fillStyle='#00e0ff88';x.fillRect(p.x,p.y,2,2);for(let j=i+1;j<P.length;j++){const d=Math.hypot(p.x-P[j].x,p.y-P[j].y);if(d<110){x.strokeStyle=`rgba(0,224,255,${.12-d/1100})`;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(P[j].x,P[j].y);x.stroke()}}});requestAnimationFrame(f)})()})();
+(()=>{const w=['Purify water on a mountain top 💧','Power a village with the sun ☀️','Turn waste into wealth ♻️','Build smart, safe cities 🏙️','Your idea can change lives 🌍'];let i=0,j=0,del=0;const e=$('ty');(function t(){const s=w[i];e.textContent=s.slice(0,j);if(!del&&j++===s.length){del=1;return setTimeout(t,1600)}if(del&&--j<0){del=0;j=0;i=(i+1)%w.length}setTimeout(t,del?30:70)})()})();
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const n=+e.target.dataset.n;let v=0;const t=setInterval(()=>{v+=Math.ceil(n/40);if(v>=n){v=n;clearInterval(t)}e.target.textContent=v},35)}));document.querySelectorAll('[data-n]').forEach(x=>cio.observe(x));
+document.querySelectorAll('.hw,.dom').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(600px) rotateY(${px*12}deg) rotateX(${-py*12}deg) translateY(-6px)`});c.addEventListener('mouseleave',()=>c.style.transform='')});
+$('mode').textContent=NOKEY?'• basic mode (no AI key)':'• AI on';
+</script></body></html>
