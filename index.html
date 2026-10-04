@@ -1,7 +1,5 @@
-<!doctype html>
+s<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" href="favicon.ico.png" type="image/png">
-</head>
 <title>FutureLab – Design solutions to real-life problems</title>
 <style>
 :root{--bg:#060a14;--card:#0d1426;--line:#1c2a4a;--a:#00e0ff;--b:#8a5cff;--g:#2dff9a;--t:#e9f1ff;--m:#8fa3c7}
@@ -51,7 +49,7 @@ textarea:focus,input:focus,select:focus{outline:0;border-color:var(--a);box-shad
 footer{text-align:center;color:var(--m);padding:40px;border-top:1px solid var(--line)}
 #qr{background:#fff;padding:10px;border-radius:12px;display:inline-block;margin-top:10px}
 @media print{body *{visibility:hidden}#result,#result *{visibility:visible}#result{position:absolute;left:0;top:0;width:100%;color:#000}.btn{display:none}}
-
+ 
 #bg{position:fixed;inset:0;z-index:-2;pointer-events:none}
 .hero{display:flex;align-items:center;gap:30px;flex-wrap:wrap}.hero>div:first-child{flex:1 1 420px}
 .earth{flex:1 1 320px;max-width:430px;animation:bob 6s ease-in-out infinite}
@@ -66,7 +64,7 @@ footer{text-align:center;color:var(--m);padding:40px;border-top:1px solid var(--
 .hint{display:block;color:var(--m);font-size:12px;margin-top:4px}</style></head><body>
 <div class="orb o1"></div><div class="orb o2"></div>
 <nav><div class="logo">🚀 FutureLab <small id="mode" style="font-size:11px;color:#8fa3c7;-webkit-text-fill-color:#8fa3c7"></small></div><div><a href="#explore">Explore Solutions</a><a href="#problems">Share Problem</a><a href="#submit">Submit Solution</a><a href="#donate">Donation</a><a href="#contact">Contact</a></div></nav>
-
+ 
 <canvas id="bg"></canvas>
 <section id="home" class="hero"><div><h1>Design the <span class="grad">future</span>,<br>one real problem at a time.</h1>
 <p class="typed" id="ty"></p>
@@ -92,12 +90,12 @@ footer{text-align:center;color:var(--m);padding:40px;border-top:1px solid var(--
 <div id="steps"></div>
 <div id="go" style="display:none"><button class="btn" onclick="estimate()">⚡ Calculate with AI</button></div>
 <div id="result"></div></div></section>
-
+ 
 <section id="problems" class="rv"><h2>🧩 Share a Problem</h2><p class="sub">Tell us a real problem people face. Good ones appear below for others to solve.</p>
 <div class="panel"><textarea id="np" rows="3" placeholder="e.g. Water pipes freeze every winter in our village in Nubra…"></textarea>
 <button class="btn" style="margin-top:12px" onclick="send('problem','np','npm')">Submit Problem</button><div class="msg" id="npm"></div></div>
 <div class="plist" id="plist"></div></section>
-
+ 
 <section id="submit" class="rv"><h2>💡 Submit Your Solution / Upgrade</h2><p class="sub">Our AI checks every submission. Approved ideas go straight to the FutureLab team.</p>
 <div class="panel"><textarea id="sol" rows="4" placeholder="Write your solution, upgrade or opinion (minimum 20 characters)…"></textarea>
 <button class="btn" style="margin-top:12px" onclick="checkSol()">🤖 Check with AI</button><div class="msg" id="sm"></div>
@@ -109,19 +107,18 @@ footer{text-align:center;color:var(--m);padding:40px;border-top:1px solid var(--
 <div><label>Your email</label><input id="em" type="email" placeholder="e.g. tsering.dolma@gmail.com"><small class="hint">So our team can reply to you</small></div>
 <div><label>Village / City</label><input id="vl" placeholder="e.g. Diskit, Hemis, Likir, Leh"><small class="hint">Example: Diskit, Hemis, Likir, Sumur, Leh</small></div></div>
 <button class="btn" style="margin-top:14px" onclick="final()">Send to FutureLab ✓</button><div class="msg" id="fm"></div></div></div></section>
-
+ 
 <section id="donate" class="rv"><h2>💳 Donation</h2><p class="sub">Support free prototypes for remote communities. Pay with any UPI app – Paytm, GPay, PhonePe, BHIM.</p>
 <div class="panel"><div class="amt"><button class="btn ghost" onclick="pay(51)">₹51</button><button class="btn ghost" onclick="pay(101)">₹101</button><button class="btn ghost" onclick="pay(501)">₹501</button><button class="btn ghost" onclick="pay(1001)">₹1001</button></div>
 <input id="am" type="number" min="1" placeholder="Or enter any amount (₹)"><br><br>
 <button class="btn" onclick="pay(document.getElementById('am').value)">💳 Donate with UPI</button>
-<p class="sub" style="margin-top:14px">UPI ID: <b id="upiid"></b> · On a computer, scan this QR with any UPI app:</p><div id="qr"></div></div></section>
-
+<p class="sub" style="margin-top:14px">UPI ID: <b id="upiid"></b> <button class="btn ghost" style="padding:6px 14px" onclick="copyUpi()">📋 Copy</button></p><div class="msg" id="dm"></div></div></section>
+ 
 <section id="contact" class="rv"><h2>📞 Contact</h2><div class="ct panel"><div>📱 Phone<br><a href="tel:+919186124831">9186124831</a></div><div>✉️ Email<br><a href="mailto:rigzenmutup937@gmail.com">rigzenmutup937@gmail.com</a></div></div></section>
 <footer>© FutureLab · Built for a better tomorrow 🌍</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+ 
 <script>
-const UPI_ID='9186124831@paytm'; // ⚠ change to your exact Paytm/UPI ID
+const UPI_ID='rigzenmutup937@oksbi';
 const D=[['Mountains','🏔️','mountains'],['Water','🌊','water'],['Energy','⚡','energy'],['Cities','🏙️','cities'],['Agriculture','🌾','agriculture'],['Health','🏥','health'],['Education','📚','education'],['Transport','🚌','transport'],['Waste & Recycling','♻️','waste'],['Disaster Safety','🌋','disaster'],['Climate & Environment','🌱','environment'],['Space Tech','🚀','space']];
 const G={mountains:'#1d3b5c,#0b1a2b',water:'#0a4d7a,#06182b',energy:'#7a5a0a,#1b1405',cities:'#3b2a6b,#0e0a1f',agriculture:'#1f5a2b,#0a1a0d',health:'#7a1f3a,#1a0a10',education:'#2a4a7a,#0a1220',transport:'#5a3a1f,#150d07',waste:'#1f5a4a,#07150f',disaster:'#7a2f1f,#1a0b07',environment:'#2a6b3b,#08170c',space:'#2b1f6b,#07051a'};
 const STATES=['Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh','Goa','Gujarat','Haryana','Himachal Pradesh','Jharkhand','Karnataka','Kerala','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura','Uttar Pradesh','Uttarakhand','West Bengal','Andaman & Nicobar','Chandigarh','Dadra & Nagar Haveli and Daman & Diu','Delhi','Jammu & Kashmir','Ladakh','Lakshadweep','Puducherry'];
@@ -136,7 +133,7 @@ D.forEach(([n,ic,id])=>{const c=document.createElement('div');c.className='dom';
 function pick(c,n,ic){document.querySelectorAll('.dom').forEach(x=>x.classList.remove('on'));c.classList.add('on');S={d:n,steps:[],picks:[],res:null};
 $('builder').style.display='block';$('bt').textContent=ic+' '+n;$('prob').value='';$('prob').placeholder='Describe the '+n+' problem you want to solve, e.g. "No clean drinking water in winter at 4000 m altitude"';
 $('steps').innerHTML='';$('go').style.display='none';$('result').innerHTML='';$('builder').scrollIntoView({behavior:'smooth',block:'start'})}
-
+ 
 // ====== SETTINGS (edit these 3 lines) ======
 const ANTHROPIC_KEY='PASTE_YOUR_ANTHROPIC_KEY_HERE';   // console.anthropic.com
 const WEB3FORMS_KEY='';  // EASIEST: get a free key at web3forms.com (enter rigzenmutup937@gmail.com, the key arrives in your email) and paste it here
@@ -144,7 +141,7 @@ const FORM_URL='';  // (optional alternative) Formspree link  // free inbox to y
 const MODEL='claude-sonnet-5-5';
 const BEST_SCORE=7; // only solutions the AI rates 7/10 or higher are emailed to you (use 1-10)
 // ===========================================
-
+ 
 // ===== BASIC MODE: works with no API key (simple built-in logic instead of real AI) =====
 const NOKEY=ANTHROPIC_KEY.startsWith('PASTE');
 const BAD=/(f+u+c+k|sh[i1]t|b[i1]tch|a+ssh[o0]le|bastard|dick|pussy|slut|whore|madarchod|behenchod|bhenchod|chut[iy]a|gaand?u|bhosd|harami|randi|lund|mc\b|bc\b|kamin[ae]|kutt[ae])/i;
@@ -233,9 +230,12 @@ async function final(){if(!$('nm').value.trim()||!$('fa').value.trim()||!$('st')
 if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test($('em').value.trim()))return show('fm',false,'Please enter a valid email so we can reply to you.');
 if(await send('solution','sol','fm',{name:$('nm').value,father:$('fa').value,state:$('st').value,village:$('vl').value,region:$('rg').value,email:$('em').value.trim(),verdict:S.v}))$('form').style.display='none'}
 function loadP(){const l=JSON.parse(localStorage.getItem('fl_p')||'[]');$('plist').innerHTML='';l.forEach(p=>{const d=document.createElement('div');d.textContent=p.text;$('plist').appendChild(d)})}loadP();
-function pay(a){a=Number(a);if(!a||a<1)return alert('Enter a valid amount');const u=`upi://pay?pa=${UPI_ID}&pn=FutureLab&am=${a}&cu=INR&tn=FutureLab%20Donation`;
-$('qr').innerHTML='';new QRCode($('qr'),{text:u,width:170,height:170});if(/Android|iPhone|iPad/i.test(navigator.userAgent))location.href=u}
-
+function pay(a){a=Number(a);if(!a||a<1)return alert('Enter a valid amount');
+const u=`upi://pay?pa=${UPI_ID}&pn=FutureLab&am=${a}&cu=INR&tn=FutureLab%20Donation`;
+if(/Android|iPhone|iPad/i.test(navigator.userAgent)){show('dm',true,'Opening your UPI app for ₹'+a+'…');location.href=u}
+else show('dm',true,'On a computer, open any UPI app (Paytm, GPay, PhonePe) on your phone and pay ₹'+a+' to '+UPI_ID+'. Tap Copy to copy the ID.')}
+function copyUpi(){navigator.clipboard.writeText(UPI_ID).then(()=>show('dm',true,'✅ UPI ID copied: '+UPI_ID),()=>show('dm',true,'UPI ID: '+UPI_ID))}
+ 
 // ===== illustrated scenes (built-in pictures, no downloads needed) =====
 function art(id){const c=G[id].split(','),S=(b)=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="${c[1]}"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/>${b}</svg>`;
 const stars=[...Array(25)].map((_,i)=>`<circle cx="${(i*97)%400}" cy="${(i*53)%160}" r="${i%3?1:2}" fill="#fff" opacity=".7"/>`).join('');
@@ -261,3 +261,4 @@ const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)retur
 document.querySelectorAll('.hw,.dom').forEach(c=>{c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(600px) rotateY(${px*12}deg) rotateX(${-py*12}deg) translateY(-6px)`});c.addEventListener('mouseleave',()=>c.style.transform='')});
 $('mode').textContent=NOKEY?'• basic mode (no AI key)':'• AI on';
 </script></body></html>
+ 
